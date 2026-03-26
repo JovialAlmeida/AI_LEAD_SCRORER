@@ -34,6 +34,7 @@ st.markdown("*Powered by gpt-oss-120b | Built for CRM & Sales teams*")
 st.divider()
 
 # Sidebar: API Key 
+with st.sidebar:
     st.header("Configuration")
     api_key = st.text_input(
         "Groq API Key",
