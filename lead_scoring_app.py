@@ -60,7 +60,7 @@ st.subheader("Lead Information")
 col1, col2 = st.columns(2)
 
 with col1:
-    company_name = st.text_input("Company Name", placeholder="e.g. Acme Corp")
+    company_name = st.text_input("Company Name", placeholder="e.g. D'Almeidas' grp")
     industry = st.selectbox("Industry", [
         "Technology", "Finance", "Healthcare", "Retail / E-commerce",
         "Manufacturing", "Education", "Real Estate", "Other"
@@ -74,7 +74,7 @@ with col1:
     ])
 
 with col2:
-    contact_name    = st.text_input("Contact Name", placeholder="e.g. Vanessa")
+    contact_name    = st.text_input("Contact Name", placeholder="e.g. Jovial")
     job_title       = st.text_input("Job Title", placeholder="e.g. Head of Sales")
     engagement      = st.selectbox("Engagement Level", [
         "Cold (no prior contact)",
