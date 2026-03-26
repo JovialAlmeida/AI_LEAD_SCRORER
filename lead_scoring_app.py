@@ -3,14 +3,14 @@ import os
 import json
 from groq import Groq
 
-# ── Page config ───────────────────────────────────────────────────────────────
+# Page config 
 st.set_page_config(
     page_title="AI Lead Scorer",
     page_icon="!$$!!",
     layout="centered"
 )
 
-# ── Custom CSS ─────────────────────────────────────────────────────────────────
+# Custom CSS 
 st.markdown("""
 <style>
     .score-box {
@@ -28,13 +28,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── Header ─────────────────────────────────────────────────────────────────────
+# Header 
 st.title("AI Lead Scoring Tool")
 st.markdown("*Powered by gpt-oss-120b | Built for CRM & Sales teams*")
 st.divider()
 
-# ── Sidebar: API Key ───────────────────────────────────────────────────────────
-with st.sidebar:
+# Sidebar: API Key 
     st.header("Configuration")
     api_key = st.text_input(
         "Groq API Key",
@@ -54,7 +53,7 @@ with st.sidebar:
     st.markdown("MSc Business Analytics · Dublin")
     st.markdown("[GitHub](https://github.com/JovialAlmeida) · [LinkedIn](https://linkedin.com/in/joviald)")
 
-# ── Lead Input Form ────────────────────────────────────────────────────────────
+# Lead Input Form 
 st.subheader("Lead Information")
 
 col1, col2 = st.columns(2)
@@ -98,11 +97,11 @@ timeline = st.selectbox("Purchase Timeline", [
     "Within 3 months", "Immediate / urgent need"
 ])
 
-# ── Score Button ───────────────────────────────────────────────────────────────
+# Score Button 
 st.divider()
 score_btn = st.button("Score This Lead", use_container_width=True, type="primary")
 
-# ── Scoring Logic ──────────────────────────────────────────────────────────────
+# Scoring Logic
 if score_btn:
     if not api_key:
         st.error("Please enter your Groq API key in the sidebar.")
@@ -165,7 +164,8 @@ Scoring guide:
                     raw = raw[4:]
 
             result = json.loads(raw)
-
+            
+    # Exception Handling
         except json.JSONDecodeError:
             st.error("AI returned an unexpected format. Please try again.")
             st.code(raw)
@@ -174,7 +174,7 @@ Scoring guide:
             st.error(f"API error: {e}")
             st.stop()
 
-    # ── Results ────────────────────────────────────────────────────────────────
+    # Results 
     st.subheader("Lead Score Results")
 
     score = result.get("score", 0)
